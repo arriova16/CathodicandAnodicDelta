@@ -91,6 +91,8 @@ for i = 1:length(data)
    electrodes = unique(data(i).Electrodes);
    pulse_string = convertCharsToStrings(data(i).Pulse); 
    data(i).Pulse= pulse_string;
+    
+  
 
 
    if data(i).Pulse == 'Cathodic'
@@ -98,22 +100,21 @@ for i = 1:length(data)
    else
        an_idx = find(data(i).Pulse == 'Anodic');
    end
+%wrong try again
+
+    if data(cath_idx).Electrodes == electrodes 
+        deltcath = data(cath_idx).mechthreshold - data(i).mechthreshold;
+    else
+        deltan = data(i).mechthreshold - data(cath_idx).mechthreshold;
+   end
 
 
-    if data(i).Electrodes == electrodes 
-         deltcath = data(cath_idx).mechthreshold - data(an_idx).mechthreshold;
-    end
+    % if data(i).Electrodes == electrodes 
+    %      deltcath = data(cath_idx).mechthreshold - data(an_idx).mechthreshold;
+    % end
 
-    
-  % if electrodes == data(i).Electrodes
-  %     deltcath = data(cath_idx).mechthreshold - data(cath_idx).mechthreshold;
-  % end
-  
-   % cat_pulse = find(data(i).Pulse == 'Cathodic');
-   %  cat_pulse = find(data(i).Pulse == 'Cathodic');
-  % if electrodes == data(i).Electrodes 
-  %     deltcath = 
-  % 
+
+ 
 
 %condition to do this only if electrodes are matching but pulses are
 %different
