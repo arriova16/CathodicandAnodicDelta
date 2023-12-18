@@ -92,25 +92,8 @@ for i = 1:length(data)
    pulse_string = convertCharsToStrings(data(i).Pulse); 
    data(i).Pulse= pulse_string;
 
+   cat_pul
 
-   if data(i).Pulse == 'Cathodic'
-       cath_idx = find(data(i).Pulse == 'Cathodic');
-   else
-       an_idx = find(data(i).Pulse == 'Anodic');
-   end
-
-
-    if data(i).Electrodes == electrodes 
-         deltcath = data(cath_idx).mechthreshold - data(an_idx).mechthreshold;
-    end
-
-    
-  % if electrodes == data(i).Electrodes
-  %     deltcath = data(cath_idx).mechthreshold - data(cath_idx).mechthreshold;
-  % end
-  
-   % cat_pulse = find(data(i).Pulse == 'Cathodic');
-   %  cat_pulse = find(data(i).Pulse == 'Cathodic');
   % if electrodes == data(i).Electrodes 
   %     deltcath = 
   % 
