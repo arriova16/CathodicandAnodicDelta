@@ -129,12 +129,6 @@ sz = 100;
 scatter(delta_an, delta_cath,sz, 'd', 'filled','LineWidth',1.5)
 ylabel('Cathodic-Anodic Threshold')
 xlabel('Anodic-Cathodic Threshold')
-xlim([-.2 .2])
+xlim([0 .2])
 ylim([-0.2 .2])
-
 % change axis from 0- 0.2
-
-% xaxis = delta threshold during anodic condition
-% yaxis = delta threshold during cathodic condition
-% the delta is the difference between icms and w/o icms in either cathodic
-% or anodic
