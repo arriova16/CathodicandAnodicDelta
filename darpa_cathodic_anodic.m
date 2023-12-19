@@ -94,7 +94,6 @@ for i = 1:length(data)
     
   
 
-
    if data(i).Pulse == 'Cathodic'
        cath_idx = find(data(i).Pulse == 'Cathodic');
    else
