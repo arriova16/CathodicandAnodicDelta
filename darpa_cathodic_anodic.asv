@@ -114,7 +114,38 @@ for e = 1:size(electrodes, 1)
      %combining the cathodic trials and the same electrodes
      cath_e_idx = e_idx & cath_idx ;
      an_e_idx = e_idx & an_idx;
-     delta_cath(e) = data(cath_e_idx).mechthreshold - data(an_e_idx).mechthreshold;
-     delta_an(e) = data(an_e_idx).mechthreshold - data(cath_e_idx).mechthreshold;
+     deltacath(e) = data(cath_e_idx).mechthreshold - data(an_e_idx).mechthreshold;
     
 end
+
+
+%    if data(i).Pulse == 'Cathodic'
+%        cath_idx = find(data(i).Pulse == 'Cathodic');
+%    else
+%        an_idx = find(data(i).Pulse == 'Anodic');
+%    end
+% %wrong try again
+% 
+%     if data(i).Electrodes == electrodes 
+%         deltcath(e) = data(cath_e_idx).mechthreshold - data(an_e_idx).mechthreshold;
+%     else
+%         deltan = data(i).mechthreshold - data(cath_idx).mechthreshold;
+%    end
+% 
+
+    % if data(i).Electrodes == electrodes 
+    %      deltcath = data(cath_idx).mechthreshold - data(an_idx).mechthreshold;
+    % end
+
+    % chico = find((vertcat(data(:).Electrodes) == electrodes(e,:)) & ...
+    %             strcmpi(pulse_data, 'Cathodic'));
+    % 
+    % theman = find((vertcat(data(:).Electrodes) == electrodes(e,:)) & ...
+    %             strcmpi(pulse_data, 'Anodic'));
+    % 
+    % oops = chico-theman;
+ 
+
+%condition to do this only if electrodes are matching but pulses are
+%different
+% data(i).mechthreshold - data(i).mechthreshold
