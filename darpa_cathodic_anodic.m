@@ -118,3 +118,13 @@ for e = 1:size(electrodes, 1)
      delta_an(e) = data(an_e_idx).mechthreshold - data(cath_e_idx).mechthreshold;
     
 end
+
+%% PLotting 
+
+hold on
+ax = gca;
+ax.FontSize = 15;
+sz = 100;
+scatter(delta_cath, delta_an,sz, 'd', 'filled','LineWidth',1.5)
+xlabel('Cathodic-Anodic Threshold')
+ylabel('Anodic-Cathodic Threshold')
