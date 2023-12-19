@@ -55,7 +55,7 @@ for i = 1:length(data)
  end
     
 %% mech threshold
-
+%need to plot out both with and without icms
 sigfun = @(c,x) (c(3) .* (1./(1 + exp(-c(1).*(x-c(2)))))) + c(4);
 dprime_threshold = 1.35;
 
@@ -63,19 +63,19 @@ for d = 1:size(data,2)
     for j = 1:size(data(d).DetectionTable,1)
         for n = 1:size(data(d).DprimeTable,1)
             x = str2double(data(d).DetectionTable.Properties.RowNames);
-            varnames = data(d).CoeffTable.Properties.VariableNames;
-            y = data(i).DprimeTable{:,:};   
-            %changed because some points werent reaching threshold
-            % xq = linspace(x(1), x(end));
-            xq = linspace(0, 0.3);
-
-            yq = sigfun(data(d).CoeffTable.dPrime{1}, xq);
-            [~,b] = min(abs(yq-dprime_threshold));
-            % plot out thresholds to make sure its correct
+             varnames = data(d).CoeffTable.Properties.VariableNames;
+             y = data(i).DprimeTable{:,:}; 
+             
+             %changed because some points werent reaching threshold
+              % xq = linspace(x(1), x(end));
+             xq = linspace(0, 0.3);
+             yq = sigfun(data(d).CoeffTable.dPrime{1}, xq);
+             [~,b] = min(abs(yq-dprime_threshold));
+            plot out thresholds to make sure its correct
             hold on
-             % plot(xq, yq, 'LineWidth', 2)
+            plot(xq, yq, 'LineWidth', 2)
 
-            % plot([0 xq(b) xq(b)], [dprime_threshold, dprime_threshold -1], 'LineStyle','--')
+            plot([0 xq(b) xq(b)], [dprime_threshold, dprime_threshold -1], 'LineStyle','--')
 
             data(d).mechthreshold = xq(b);
         
