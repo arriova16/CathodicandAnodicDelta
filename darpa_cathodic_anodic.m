@@ -153,34 +153,18 @@ for t = 1:length(data)
     delta_an = [data(an_idx_1).diff];
 end    
    
-%%
+%% Plotting anodic and cathodic deltas
 
 hold on
 ax = gca;
 ax.FontSize = 15;
 sz = 100;
 scatter(delta_an, delta_cath,sz, 'd', 'filled','LineWidth',1.5)
-% plot([0,0], [-0.05 0.05] , 'Color', [.6 .6 .6], 'LineStyle', '--')
+plot([0,0], [-0.04 0.04] , 'Color', [.6 .6 .6], 'LineStyle', '--')
+plot( [-0.04 0.04],[0,0] , 'Color', [.6 .6 .6], 'LineStyle', '--')
 ylabel('Delta Cathodic Threshold')
 xlabel('Delta Anodic Threshold')
-xlim([-.2 .2])
-ylim([-0.2 .2])
+xlim([-.04 .04])
+ylim([-0.04 .04])
 
-   % % In data, find which rows contain those electrodes
-   % %doing find here messed it up and only went through rows then columns
-   % %one at a time instead of at the same time
-   % 
-   %   e_idx = ismember(vertcat(data(:).Electrodes),electrodes(e, :), "rows");
-   % 
-   %   %combining the cathodic trials and the same electrodes
-   %   cath_e_idx = e_idx & cath_idx ;
-   %   an_e_idx = e_idx & an_idx;
-   %   delta_cath(e) = data(cath_e_idx).mechthreshold - data(an_e_idx).mechthreshold;
-   %   delta_an(e) = data(an_e_idx).mechthreshold - data(cath_e_idx).mechthreshold;
-   %  delta_an_sorted = sort(delta_an);
-   %  delta_cath_sorted = sort(delta_cath);
-
-% xaxis = delta threshold during anodic condition
-% yaxis = delta threshold during cathodic condition
-% the delta is the difference between icms and w/o icms in either cathodic
-% or anodic
+ 
