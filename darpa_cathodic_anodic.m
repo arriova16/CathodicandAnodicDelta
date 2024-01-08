@@ -69,16 +69,21 @@ for d = 1:size(data,2)
              %changed because some points werent reaching threshold
               % xq = linspace(x(1), x(end));
              xq = linspace(0, 0.3);
+             %without icms
              yq = sigfun(data(d).CoeffTable.dPrime{1}, xq);
+             %with icms
+             aq = sigfun(data(d).CoeffTable.dPrime{2}, xq);
              [~,b] = min(abs(yq-dprime_threshold));
-            plot out thresholds to make sure its correct
+             [~,c] = min(abs(aq-dprime_threshold));
+           % plot %out thresholds to make sure its correct
             hold on
-            plot(xq, yq, 'LineWidth', 2)
+            % plot(xq, yq, 'LineWidth', 2)
 
             plot([0 xq(b) xq(b)], [dprime_threshold, dprime_threshold -1], 'LineStyle','--')
+            plot([0 xq(c) xq(c)], [dprime_threshold, dprime_threshold -1], 'LineStyle','--')
 
-            data(d).mechthreshold = xq(b);
-        
+            data(d).woicmsthreshold = xq(b);
+            data(d).wicmsthreshold = xq(c);
      
             
         end
