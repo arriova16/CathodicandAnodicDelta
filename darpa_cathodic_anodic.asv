@@ -192,8 +192,9 @@ subplot(1,3,3); hold on
 chuck=w_icms./w_o_icms;
 chuck2 = w_icms - w_o_icms;
 
+Swarm(1,chuck2, sz)
 
-
-
+ylabel('% Threshold Reduction')
+ylim([-0.04 0.04])
 
  

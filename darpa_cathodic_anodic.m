@@ -190,11 +190,11 @@ plot(xlim,ylim,'Color', [.8 .8 .8], 'LineStyle','--')
 subplot(1,3,3); hold on
 
 chuck=w_icms./w_o_icms;
-chuck2 = w_icms - w_o_icms;
 
-plot(chuck2)
+Swarm(1,chuck)
 
 ylabel('% Threshold Reduction')
-xlabel('Electrodes')
+ylim([-0.02 0.02])
+xlim([0.5 1.5])
 
  
