@@ -191,10 +191,11 @@ subplot(1,3,3); hold on
 
 chuck=w_icms./w_o_icms;
 
-Swarm(1,chuck)
+Swarm(.5,chuck)
 
 ylabel('% Threshold Reduction')
-ylim([-0.02 0.02])
-xlim([0.5 1.5])
+xlabel('Electrode Groups')
+ylim([.2 1])
+xlim([.2 1])
 
  
