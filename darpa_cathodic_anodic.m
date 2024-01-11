@@ -39,8 +39,6 @@ end
  %% Analysis 
  %need to get detection tables first %try to write function
  %then get the fit the curve using charles function
-
-
 for i = 1:length(data)
     %need to create a new function in rewrite %include charles fitsigmoid
     [detection_table{i}, dprime_table{i}, coeff_table{i}] = AnalyzeHybridTable(data(i).ResponseTable);
@@ -65,9 +63,6 @@ for d = 1:size(data,2)
             x = str2double(data(d).DetectionTable.Properties.RowNames);
              varnames = data(d).CoeffTable.Properties.VariableNames;
              y = data(i).DprimeTable{:,:}; 
-             
-             %changed because some points werent reaching threshold
-              % xq = linspace(x(1), x(end));
              xq = linspace(0, 0.3);
              %without icms
              yq = sigfun(data(d).CoeffTable.dPrime{1}, xq);
@@ -75,7 +70,7 @@ for d = 1:size(data,2)
              aq = sigfun(data(d).CoeffTable.dPrime{2}, xq);
              [~,b] = min(abs(yq-dprime_threshold));
              [~,c] = min(abs(aq-dprime_threshold));
-           % plot %out thresholds to make sure its correct
+           % plot out thresholds to make sure its correct
             hold on
             % plot(xq, yq, 'LineWidth', 2)
 
@@ -95,9 +90,6 @@ end
 
 %% delta anodic - cathodic
 
-% each of the unique electrodes and if its cathodic and anodic subtract
-%doing this outside of loop because it would only give me the unique
-%electrodes of each row. not useful
 
 electrodes_1 = vertcat(data(:).Electrodes);
 electrodes = unique(electrodes_1, 'rows');
@@ -110,12 +102,8 @@ an_idx = strcmpi(pulse_data, 'Anodic');
 
 
 for e = 1:size(electrodes, 1)
-    
-    
+       
    % In data, find which rows contain those electrodes
-   %doing find here messed it up and only went through rows then columns
-   %one at a time instead of at the same time
-
      e_idx = ismember(vertcat(data(:).Electrodes),electrodes(e, :), "rows");
 
     %  %combining the cathodic trials and the same electrodes
@@ -126,19 +114,6 @@ for e = 1:size(electrodes, 1)
     % delta_an_sorted = sort(delta_an);
     % delta_cath_sorted = sort(delta_cath);
 end
-%% PLotting 
-
-% hold on
-% ax = gca;
-% ax.FontSize = 15;
-% sz = 100;
-% scatter(delta_an, delta_cath,sz, 'd', 'filled','LineWidth',1.5)
-% ylabel('Cathodic-Anodic Threshold')
-% xlabel('Anodic-Cathodic Threshold')
-% xlim([-.2 .2])
-% ylim([-0.2 .2])
-% % change axis from 0- 0.2
-% 
 
 %% Analysis of w/icms and w/o icms thresholds within conditions
 
@@ -169,17 +144,21 @@ ylim([-0.04 .04])
 
 %% plot of thresholds with and witout icms for cathodic condition
 
-for i = 1:size(data,1)
-    w_o_icms = vertcat(data(cath_idx).woicmsthreshold);
-    w_icms = vertcat(data(cath_idx).wicmsthreshold);
+w_o_icms = vertcat(data(cath_idx).woicmsthreshold);
+w_icms = vertcat(data(cath_idx).wicmsthreshold);
 
-    hold on
-    scatter(w_o_icms,w_icms,sz, 'd', 'filled','LineWidth',1.5)
-    title('Cathodic Thresholds')
-    xlabel('Without ICMS(mm)')
-    ylabel('With ICMS(mm)')
-    xlim([0 .1])
-    ylim([0 .1])
+hold on
+scatter(w_o_icms,w_icms,sz, 'd', 'filled','LineWidth',1.5)
+title('Cathodic Thresholds')
+xlabel('Without ICMS(mm)')
+ylabel('With ICMS(mm)')
+xlim([0 .1])
+ylim([0 .1])
 
-end
+%% plotting psychometric curve for darpa
+%electrodes 12 and 22
+
+
+
+
  
