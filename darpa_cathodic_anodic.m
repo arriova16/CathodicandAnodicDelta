@@ -62,7 +62,6 @@ for d = 1:size(data,2)
         for n = 1:size(data(d).DprimeTable,1)
             x = str2double(data(d).DetectionTable.Properties.RowNames);
              varnames = data(d).CoeffTable.Properties.VariableNames;
-             y = data(i).DprimeTable{:,:}; 
              xq = linspace(0, 0.3);
              %without icms
              yq = sigfun(data(d).CoeffTable.dPrime{1}, xq);
@@ -158,35 +157,44 @@ ylim([0 .1])
 %% plotting psychometric curve for darpa
 %electrodes 22 and 24, cathodic
 
+dprime_threshold = 1.35;
 
 SetFont('Arial', 18)
 
-%rewrite to not be hard coded
-
-darpa_elec = data(6).Electrodes;
-
  subplot(1,3,1); hold on
+
+  mechamps = str2double(data(6).DetectionTable.Properties.RowNames);
+   %this can be reduced to one line
+   plot(mechamps, data(6).DetectionTable{:,1}, 'o-', 'Color', rgb(66, 66, 66),'LineWidth', 4)
+   plot(mechamps, data(6).DetectionTable{:,2}, 'o-', 'Color', rgb(198, 40, 40),'LineWidth', 4)
     
-    plot(data(darpa_elec).)
-
-
-
-
-
-
-
-
-
+   ylabel('pDetect')
+   xlabel('Stimulus Amplitude (mm)')
+title('Electrode 22 and 24')
 subplot(1,3,2); hold on
 
+w_o_icms = vertcat(data(cath_idx).woicmsthreshold);
+w_icms = vertcat(data(cath_idx).wicmsthreshold);
 
+hold on
 
+scatter(w_icms,w_o_icms,sz, 'filled','LineWidth',1.5)
+
+title('Cathodic Thresholds')
+ylabel('Without ICMS(mm)')
+xlabel('With ICMS(mm)')
+xlim([0 .09])
+ylim([0 .09])
+plot(xlim,ylim,'Color', [.8 .8 .8], 'LineStyle','--')
 
 subplot(1,3,3); hold on
 
+chuck=w_icms./w_o_icms;
+chuck2 = w_icms - w_o_icms;
 
+plot(chuck2)
 
-
-
+ylabel('% Threshold Reduction')
+xlabel('Electrodes')
 
  
