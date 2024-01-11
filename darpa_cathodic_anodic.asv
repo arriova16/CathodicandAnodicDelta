@@ -175,11 +175,7 @@ for i = 1:size(data,1)
 
     hold on
     scatter(w_o_icms,w_icms,sz, 'd', 'filled','LineWidth',1.5)
-    title('Cathodic Thresholds')
-    xlabel('Without ICMS(mm)')
-    ylabel('With ICMS(mm)')
-    xlim([0 .1])
-    ylim([0 .1])
+    xlabel('Without ICMS ')
 
 end
  
