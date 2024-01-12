@@ -1,6 +1,6 @@
 %Loading Anodic and Cathodic mat folder
 
-tld = 'B:\ProjectFolders\DARPA\Data\ProcessedData\Pinot\Cathodic_Anodic';
+tld = 'C:\Users\arrio\Box\BensmaiaLab\ProjectFolders\DARPA\Data\ProcessedData\Pinot\Cathodic_Anodic';
 
 
 %% Loading mat files
@@ -162,6 +162,7 @@ dprime_threshold = 1.35;
 SetFont('Arial', 18)
 
  subplot(1,3,1); hold on
+axis square
 
   mechamps = str2double(data(6).DetectionTable.Properties.RowNames);
    %this can be reduced to one line
@@ -171,8 +172,10 @@ SetFont('Arial', 18)
    ylabel('pDetect')
    xlabel('Stimulus Amplitude (mm)')
 title('Electrode 22 and 24')
+
 subplot(1,3,2); hold on
 
+axis square
 w_o_icms = vertcat(data(cath_idx).woicmsthreshold);
 w_icms = vertcat(data(cath_idx).wicmsthreshold);
 
@@ -186,16 +189,25 @@ xlabel('With ICMS(mm)')
 xlim([0 .09])
 ylim([0 .09])
 plot(xlim,ylim,'Color', [.8 .8 .8], 'LineStyle','--')
+xticks(0:0.01:0.08)
+yticks(0:0.01:0.08)
+
+% x1 = 0:.1:0.01;
+% y1= x1;
+% plot(x1, y1)
+
+% .01 .02 .03 .04 .05 .06 .07 .08 .09 .1
 
 subplot(1,3,3); hold on
 
+axis square
 chuck=w_icms./w_o_icms;
 
 Swarm(.5,chuck)
 
 ylabel('% Threshold Reduction')
 xlabel('Electrode Groups')
-ylim([.2 1])
+ylim([.2 1.01])
 xlim([.2 1])
 
  
