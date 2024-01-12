@@ -189,8 +189,8 @@ xlabel('With ICMS(mm)')
 xlim([0 .09])
 ylim([0 .09])
 plot(xlim,ylim,'Color', [.8 .8 .8], 'LineStyle','--')
-xticks(0:0.01:0.08)
-yticks(0:0.01:0.08)
+xticks(0:0.02:0.08)
+yticks(0:0.02:0.08)
 
 % x1 = 0:.1:0.01;
 % y1= x1;
