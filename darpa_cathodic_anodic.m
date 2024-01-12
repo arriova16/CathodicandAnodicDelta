@@ -203,11 +203,11 @@ subplot(1,3,3); hold on
 axis square
 chuck=w_icms./w_o_icms;
 
-Swarm(.5,chuck)
-
+Swarm(.6,chuck, 'DS', 'Box', 'SwarmMarkerSize', 60)
+set(gca, 'xtick', [])
+set(gca, 'XAxisLocation', 'origin', 'YAxisLocation','origin')
 ylabel('% Threshold Reduction')
-xlabel('Electrode Groups')
-ylim([.2 1.01])
+
+ylim([0 1.01])
 xlim([.2 1])
 
- 
