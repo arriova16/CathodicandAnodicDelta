@@ -225,7 +225,7 @@ Swarm(.6,chuck, 'DS', 'Box', 'ShowStats',true,'SwarmMarkerSize', 60)
 set(gca, 'xtick', [])
 set(gca, 'XAxisLocation', 'origin', 'YAxisLocation','origin')
 ylabel('T(ICMS) / T(Con)')
-% text(.6, 1.03,'Group "0.6": Median (P(25), P(75)) = 0.71 (0.42, 0.86)', 'Color', rgb(66, 66, 66),'FontSize',12);
+text(.7, 1.03,'Group "0.6": Median (P(25), P(75)) = 0.71 (0.42, 0.86)', 'Color', rgb(66, 66, 66),'FontSize',12);
 
 
 ylim([0 1.01])
