@@ -1,6 +1,6 @@
 %Loading Anodic and Cathodic mat folder
 
-tld = 'C:\Users\arrio\Box\BensmaiaLab\ProjectFolders\DARPA\Data\ProcessedData\Pinot\Cathodic_Anodic';
+tld = 'B:\ProjectFolders\DARPA\Data\ProcessedData\Pinot\Cathodic_Anodic';
 
 
 %% Loading mat files
@@ -140,6 +140,8 @@ ylabel('Delta Cathodic Threshold')
 xlabel('Delta Anodic Threshold')
 xlim([-.04 .04])
 ylim([-0.04 .04])
+axis square;
+set(gcf, 'position', [5, 5, 400, 400])
 
 %% plot of thresholds with and witout icms for cathodic condition
 
