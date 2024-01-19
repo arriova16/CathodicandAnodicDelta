@@ -71,7 +71,7 @@ for d = 1:size(data,2)
              [~,c] = min(abs(aq-dprime_threshold));
            % plot out thresholds to make sure its correct
             hold on
-            % plot(xq, yq, 'LineWidth', 2)
+             plot(xq, yq, 'LineWidth', 2)
 
             plot([0 xq(b) xq(b)], [dprime_threshold, dprime_threshold -1], 'LineStyle','--')
             plot([0 xq(c) xq(c)], [dprime_threshold, dprime_threshold -1], 'LineStyle','--')
