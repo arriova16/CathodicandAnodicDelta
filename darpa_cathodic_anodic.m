@@ -57,6 +57,11 @@ for i = 1:length(data)
 sigfun = @(c,x) (c(3) .* (1./(1 + exp(-c(1).*(x-c(2)))))) + c(4);
 dprime_threshold = 1.35;
 
+
+%will probably have to go over!!!!
+
+
+
 for d = 1:size(data,2)
     for j = 1:size(data(d).DetectionTable,1)
         for n = 1:size(data(d).DprimeTable,1)
