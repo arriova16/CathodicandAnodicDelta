@@ -1,6 +1,6 @@
 %Loading Anodic and Cathodic mat folder
 
-tld = 'B:\ProjectFolders\DARPA\Data\ProcessedData\Pinot\Cathodic_Anodic';
+tld = 'C:\Users\arrio\Box\BensmaiaLab\UserData\UserFolders\ToriArriola\DARPA_updated\ProcessedData\Pinot\Cathodic_Anodic';
 
 
 %% Loading mat files
