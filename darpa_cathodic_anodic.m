@@ -1,6 +1,6 @@
 %Loading Anodic and Cathodic mat folder
 
-tld = 'C:\Users\arrio\Box\BensmaiaLab\UserData\UserFolders\ToriArriola\DARPA_updated\ProcessedData\Pinot\Cathodic_Anodic';
+tld = 'Z:\UserFolders\ToriArriola\DARPA_updated\ProcessedData\Pinot\Cathodic_Anodic';
 
 
 %% Loading mat files
@@ -169,21 +169,22 @@ dprime_threshold = 1.35;
 SetFont('Arial', 18)
 % sgt = sgtitle('Electrode 22 and 24');
 % sgt.FontSize = 25;
-subplot(2,2,1); hold on 
+subplot(1,3,1); hold on 
 
 
     mechamps = str2double(data(6).DetectionTable.Properties.RowNames);
    %this can be reduced to one line
     plot(mechamps, data(6).DetectionTable{:,1}, 'o-', 'Color', rgb(66, 66, 66),'LineWidth', 4)
     plot(mechamps, data(6).DetectionTable{:,2}, 'o-', 'Color', rgb(198, 40, 40),'LineWidth', 4)
-    text(.03, .35, 'Without ICMS', 'Color', rgb(66, 66, 66),'FontSize',18);
-    text(.03, .4, 'With ICMS', 'Color', rgb(198, 40, 40), 'FontSize',18);
+    ct = ColorText('Without ICMS', rgb(66, 66, 66));
+    % text(.03, .35, 'Without ICMS', 'Color', rgb(66, 66, 66),'FontSize',18);
+    % text(.03, .4, 'With ICMS', 'Color', rgb(198, 40, 40), 'FontSize',18);
     
     ylabel('pDetect')
     xlabel('Stimulus Amplitude (mm)')
    axis square
 
-subplot(2,2,2); hold on
+subplot(1,3,2); hold on
 
 
    plot(mechamps, data(6).DprimeTable{:,1}, 'o-', 'Color', rgb(66, 66, 66),'LineWidth', 4)
@@ -194,7 +195,7 @@ subplot(2,2,2); hold on
    ylabel('d''')
    xlabel('Stimulus Amplitude (mm)')
 axis square
-subplot(2,2,3); hold on
+subplot(1,3,3); hold on
 
 axis square
 w_o_icms = vertcat(data(cath_idx).woicmsthreshold);
@@ -202,7 +203,7 @@ w_icms = vertcat(data(cath_idx).wicmsthreshold);
 
 hold on
 
-scatter(w_icms,w_o_icms, 'filled','LineWidth',1.5)
+scatter(w_icms,w_o_icms, 100,rgb(33, 33, 33), 'filled')
 
 title('Cathodic Thresholds')
 ylabel('Without ICMS(mm)')
@@ -219,24 +220,24 @@ yticks(0:0.02:0.08)
 
 % .01 .02 .03 .04 .05 .06 .07 .08 .09 .1
 
-subplot(2,2,4); hold on
-
-axis square
-
-chuck=w_icms./w_o_icms;
-
-both = mean(chuck);
-
-Swarm(.6,chuck, 'DS', 'Box', 'ShowStats',true,'SwarmMarkerSize', 60)
-set(gca, 'xtick', [])
-set(gca, 'XAxisLocation', 'origin', 'YAxisLocation','origin')
-ylabel('T(ICMS) / T(Con)')
-% text(.6, 1.03,'Group "0.6": Median (P(25), P(75)) = 0.71 (0.42, 0.86)', 'Color', rgb(66, 66, 66),'FontSize',12);
-
-
-ylim([0 1.01])
-xlim([.2 1])
-
+% subplot(2,2,4); hold on
+% 
+% axis square
+% 
+% chuck=w_icms./w_o_icms;
+% 
+% both = mean(chuck);
+% 
+% Swarm(.6,chuck, 'DS', 'Box', 'ShowStats',true,'SwarmMarkerSize', 60)
+% set(gca, 'xtick', [])
+% set(gca, 'XAxisLocation', 'origin', 'YAxisLocation','origin')
+% ylabel('T(ICMS) / T(Con)')
+% % text(.6, 1.03,'Group "0.6": Median (P(25), P(75)) = 0.71 (0.42, 0.86)', 'Color', rgb(66, 66, 66),'FontSize',12);
+% 
+% 
+% ylim([0 1.01])
+% xlim([.2 1])
+% 
 
 %%
 subplot(1,2,1); hold on
@@ -262,7 +263,6 @@ yticks(0:0.02:0.08)
 % y1= x1;
 % plot(x1, y1)
 
-% .01 .02 .03 .04 .05 .06 .07 .08 .09 .1
 
 subplot(1,2,2); hold on
 
@@ -281,4 +281,22 @@ ylabel('T(ICMS) / T(Con)')
 
 ylim([0 1.01])
 xlim([.2 1])
+%% Cathodic and Anodic plots
 
+
+for i = 1:length(data)
+    
+subplot(1,2,1); hold on
+
+
+ylabel('Without ICMS(mm)')
+xlabel('With ICMS(mm)')
+axis square
+
+subplot(1,2,2); hold on
+
+
+
+
+axis square
+end
