@@ -296,7 +296,7 @@ subplot(1,2,2); hold on
 
 axis square
 end
-=======
+
 %% Plotting anodic and cathodic deltas
 
 
@@ -341,4 +341,3 @@ xlim([-.04 .04])
 ylim([-0.04 .04])
 axis square;
 set(gcf, 'position', [5, 5, 400, 400])
->>>>>>> Stashed changes
