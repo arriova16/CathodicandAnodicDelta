@@ -191,11 +191,9 @@ w_icms = vertcat(data(cath_idx).wicmsthreshold);
 
 hold on
 
-<<<<<<< Updated upstream
 scatter(w_icms,w_o_icms, 100,rgb(33, 33, 33), 'filled')
-=======
+
 scatter(w_icms,w_o_icms, 100,[.1 .1 .1],'filled','LineWidth',1.5)
->>>>>>> Stashed changes
 
 title('Cathodic Thresholds')
 ylabel('Without ICMS(mm)')
@@ -229,11 +227,7 @@ yticks(0:0.02:0.08)
 % 
 % ylim([0 1.01])
 % xlim([.2 1])
-<<<<<<< Updated upstream
-% 
-=======
 
->>>>>>> Stashed changes
 
 %%
 subplot(1,2,1); hold on
@@ -278,7 +272,6 @@ ylim([0 1.01])
 xlim([.2 1])
 %% Cathodic and Anodic plots
 
-<<<<<<< Updated upstream
 
 for i = 1:length(data)
     
