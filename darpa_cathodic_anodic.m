@@ -1,6 +1,6 @@
 %Loading Anodic and Cathodic mat folder
 
-tld = 'Z:\UserFolders\ToriArriola\DARPA_updated\ProcessedData\Pinot\Cathodic_Anodic';
+tld = 'Z:\UserFolders\ToriArriola\DARPA_updated\PreProcessedData\Pinot\Cathodic_Anodic';
 
 
 %% Loading mat files
@@ -298,7 +298,31 @@ w_icms_cath = vertcat(data(cath_idx).wicmsthreshold);
 
 w_o_icms_an = vertcat(data(an_idx).woicmsthreshold);
 w_icms_an = vertcat(data(an_idx).wicmsthreshold);
-subplot(1,2,1);hold on
+subplot(2,2,1); hold on 
+
+
+    mechamps = str2double(data(6).DetectionTable.Properties.RowNames);
+   %this can be reduced to one line
+    plot(mechamps, data(5).DetectionTable{:,1}, 'o-', 'Color', rgb(66, 66, 66),'LineWidth', 4)
+    plot(mechamps, data(5).DetectionTable{:,2}, 'o-', 'Color', rgb(198, 40, 40),'LineWidth', 4)
+    ct = ColorText('Without ICMS', rgb(66, 66, 66));
+    text(.03, .35, 'Without ICMS', 'Color', rgb(66, 66, 66),'FontSize',18);
+    text(.03, .4, 'With ICMS', 'Color', rgb(198, 40, 40), 'FontSize',18);
+    
+    ylabel('pDetect')
+    xlabel('Stimulus Amplitude (mm)')
+   axis square
+subplot(2,2,2); hold on 
+
+   plot(mechamps, data(5).DprimeTable{:,1}, 'o-', 'Color', rgb(66, 66, 66),'LineWidth', 4)
+   plot(mechamps, data(5).DprimeTable{:,2}, 'o-', 'Color', rgb(198, 40, 40),'LineWidth', 4)
+   yline(1.35,'-', 'Threshold', 'FontSize',18);
+   text( .03, .7,'0.032', 'Color', rgb(66, 66, 66),'FontSize',18);
+   text(.03, 1, '0.029', 'Color', rgb(198, 40, 40), 'FontSize',18);
+   ylabel('d''')
+   xlabel('Stimulus Amplitude (mm)')
+axis square
+subplot(2,2,3);hold on
 for d1 = 1:length(data)
 
     scatter(w_icms_cath,w_o_icms_cath,100,rgb(123, 31, 162), 'filled')
@@ -321,9 +345,9 @@ axis square
 
 
 
-subplot(1,2,2); hold on
+subplot(2,2,4); hold on
 ax = gca;
-ax.FontSize = 15;
+ax.FontSize = 18;
 sz = 100;
 scatter(delta_an, delta_cath,sz, 'd', 'filled','LineWidth',1.5)
 plot([0,0], [-0.04 0.04] , 'Color', [.6 .6 .6], 'LineStyle', '--')
